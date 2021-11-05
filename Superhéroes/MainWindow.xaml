@@ -5,18 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Superhéroes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <DockPanel Background="Aqua" LastChildFill="true">
+        Title="SuperHéroes" Icon="/assets/shield.ico" Height="450" Width="800"
+        Background="#FF97FB97">
 
-        <DockPanel Background="White" DockPanel.Dock="Top">
-            <DockPanel>
-                <TextBlock>Ironman</TextBlock>
-                <TextBlock HorizontalAlignment="Right">A</TextBlock>
+    <!--Estilos-->
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}" x:Key="TituloNombreTextBlock">
+            <Setter Property="FontSize" Value="30"></Setter>
+            <Setter Property="Margin" Value="10,10"></Setter>
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="Foreground" Value="#FFFBF5F5"></Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type Image}" x:Key="FlechaAdelantarStyle">
+            <Setter Property="Width" Value="50"></Setter>
+            <Setter Property="LayoutTransform">
+                <Setter.Value>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type Image}" x:Key="ImagenCabecera">
+            <Setter Property="DockPanel.Dock" Value="Right"></Setter>
+            <Setter Property="Stretch" Value="Uniform"></Setter>
+            <Setter Property="Margin" Value="0,0,10,0"></Setter>
+        </Style>
+    </Window.Resources>
+
+
+    <!--XAML-->
+    <DockPanel LastChildFill="true">
+
+        <DockPanel DockPanel.Dock="Top" x:Name="panelSuperiorDockPanel">
+            <DockPanel LastChildFill="False">
+                <TextBlock Style="{StaticResource TituloNombreTextBlock}" x:Name="NombreTextBlock" DockPanel.Dock="Left" Padding="20" Text="SuperHéroe" >
+                </TextBlock>
+                <Image Source="assets/xmen.png" Width="60" Style="{StaticResource ImagenCabecera}" ></Image>
+                <Image Source="/assets/avengers.png" Width="40" Style="{StaticResource ImagenCabecera}"></Image>
             </DockPanel>
         </DockPanel>
-        <DockPanel Background="Azure" DockPanel.Dock="Bottom">
-            <TextBlock>Flecha</TextBlock>
+        <DockPanel DockPanel.Dock="Bottom">
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image x:Name="FlecharetrocesoImage"  Source="/assets/arrow.png" Width="50" MouseLeftButtonUp="FlecharetrocesoImage_MouseLeftButtonUp"></Image>
+                <TextBlock x:Name="Texto1TextBlock" Text="1" FontSize="50"></TextBlock>
+                <TextBlock x:Name="Texto2TextBlock" Text="/" FontSize="50"></TextBlock>
+                <TextBlock x:Name="Texto3TextBlock" Text="3" FontSize="50"></TextBlock>
+                <Image x:Name="FlechaAdelantar" Source="/assets/arrow.png" Width="50" Style="{StaticResource FlechaAdelantarStyle}" MouseLeftButtonUp="FlechaAdelantar_MouseLeftButtonUp"/>
+            </StackPanel>
         </DockPanel>
-        <Image></Image>
+        <Image Margin="10,0"></Image>
     </DockPanel>
 </Window>
